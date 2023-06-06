@@ -1,0 +1,208 @@
+ <!DOCTYPE HTML>
+<html>
+    <head>
+        
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js" ></script>
+<script>
+        
+            $(function() {
+            let submitButton = document.getElementById('submitButton')
+            let form = document.getElementById('form1')
+            let commentCount = 0;
+            let reply = document.getElementById('reply')
+            
+            if (form) {
+            form.addEventListener('submit', function(event) {
+                
+                
+                event.preventDefault();
+
+                let yourName = document.getElementById('username').value
+                let yourComment = document.getElementById('commentText').value
+
+                if (yourName === "" || null ) {
+                    alert('please fill out both fields')
+                } else if (yourComment === "" || null) {
+                    alert("please full out both fieldds")
+                }
+                else {
+                    commentCount++;
+                    $('#comments').append(`<div class="myClass${commentCount}">`)
+                        
+                    $(`.myClass${commentCount}`).append(`<button id='deleteButton' onclick='$(\".myClass${commentCount}\").remove();'>X</button>`);
+                    $(`.myClass${commentCount}`).append(`<p id="edit${commentCount}" >Edit</p>`);
+                    $(`.myClass${commentCount}`).append(`<p id='user${commentCount}' class ="user">${yourName}</p>
+                    <p id='comment${commentCount}' class="theWords">${yourComment}</p>`);
+                    $(`.myClass${commentCount}`).append(`<p id="reply" onclick="alert('Im not that good yet')">Reply</p>`);
+                    $('#comments').append(`</div>`)
+                    event.preventDefault();
+
+                    let edit = document.getElementById('edit' + commentCount);
+
+                    edit.addEventListener('click', function () {
+
+                       this.id.substring(4, 3)
+                        const changeVisibility = $('.editt');
+                        changeVisibility[0].style.visibility = 'visible';
+
+                        $('#selectedComment').val
+
+                        let editt = document.getElementById('editt');
+                        if (editSubmit) {
+                            editSubmit.addEventListener('click', function () {
+                                //let theCommentEdit = document.getElementById(`myClass${commentCount}[3]`);
+                                var selectedComment = $('#selectedComment').value;
+                                let editText = document.getElementById('editText').value
+                                if (editText === "" || null) {
+                                    alert('bro edit this please there is no going back')
+                                } else {
+                                    
+                                    $(`.myClass${commentCount}`).remove();
+                                    $('#comments').append(`<div class="myClass${commentCount}">`)
+                        
+                        $(`.myClass${commentCount}`).append(`<button id='deleteButton' onclick='$(\".myClass${commentCount}\").remove();'>X</button>`);
+                        $(`.myClass${commentCount}`).append(`<p id="edit${commentCount}" >Edit</p>`);
+                        $(`.myClass${commentCount}`).append(`<p id='user${commentCount}' class ="user">${yourName}</p>
+                        <p id='comment${commentCount}' class="theWords">${editText}</p>`);
+                        $(`.myClass${commentCount}`).append(`<p id="reply" onclick="alert('Im not that good yet')">Reply</p>`);
+                        $('#comments').append(`</div>`)
+                                    
+                                    
+                                    //$(`.myClass${commentCount}`).toString().replace(yourComment.toString(), editText.toString());
+                                    let targetComment = document.getElementById("comment" + selectedComment);
+                                  //  targetComment.innerHTML = editText;
+                                     editt[0].remove();
+                                }
+
+                            });
+                        }
+                    });
+                }
+
+
+                //
+                
+            });
+           
+                       }
+           
+       
+        }
+    );
+    
+        </script>
+        <style>
+            .editt {
+                visibility: hidden;
+            }
+            .columnPorFavor {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+            #edit {
+                color: gray;
+                margin-left: 96%;
+                font-size: 15px;
+            }
+            #reply {
+                color: gray;
+                margin-left: 3%;
+                font-size: 15px;
+            }
+            .theWords {
+                color: black;
+                font-size: 22px;
+            }
+            .user {
+                color: black;
+                font-size: 17px;
+            }
+            #deleteButton {
+                margin-left: 96%;
+                margin-top: 10px;
+            }
+            .post {
+                background-color: magenta;
+                padding: 15px;
+                width: 100%;
+                position: fixed;
+                margin-left: 0;
+                align-self: flex-start;
+            }
+            #username {
+                width: 17%;
+                margin-right: 4%;
+                border-radius: 8%;
+            }
+            #commentText {
+                width: fit-content;
+                border-radius: 8%;
+                margin-right: 4%;
+                width: 60%;
+            }
+            #form1 {
+                flex-direction: row;
+                background-color: none;
+                width: auto;
+                padding: 20px;
+                bottom: 0;
+                position: fixed;
+                width: 100%;
+            }
+            #name {
+                font-size: 18px;
+            }
+            #text {
+                font-size: 25px;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                display: flex;
+               flex-direction: column;
+            }
+            .comment {
+                background-color: none;
+                flex-direction: column-reverse;
+                margin-top: 10px;
+                border-radius: 25px;
+
+            }
+            #hiding {
+                padding: 60px;
+                
+            }
+            #comments {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="post">
+        <p id="name">catlover2983</p>
+        <p id="text">Cats are most definitely the best animal there is.</p>
+            </div>
+
+        <div>
+        <form id="form1">
+        <input type="text" id="username" placeholder="username">
+        <input type="text" id="commentText" placeholder="please write your comment here">
+        <button id="submitButton" type="submit" form="form1">submit</button>
+        </form>
+        </div>
+<p id="hiding">kjlkjlkjlkjkljlk</p>
+<div class="columnPorFavor">
+        <div class="comment" id="comments">
+            
+        </div>
+        
+</div>
+<div class="editt">
+    <p id="test">edit: </p>
+<input type="text" id="editText" />
+<input type="hidden" id="selectedComment" value="" />
+<button type="submit" id="editSubmit">submit edit</button>
+</div>
+      
+    </body>
+</html>
