@@ -1,0 +1,22 @@
+
+.sixteen {
+    margin: 10% 20% 15% 25%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    
+}
+.blocks {
+    padding: 50px;
+    margin: 5px 15px 5px 15px;
+    width: 15%;
+    background-color: lightblue;
+    color: lightblue;
+}
+
+.changeInColor {
+   
+    background-color: blue;
+    color: blue
+}
+
